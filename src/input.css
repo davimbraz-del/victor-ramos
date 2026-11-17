@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   Tokens de movimento (skill animate): uma curva, três durações
+   ========================================================= */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-quick: 160ms;
+  --dur-std: 240ms;
+  --dur-reveal: 560ms;
+  --header-h: 4.25rem;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+  body {
+    @apply bg-off font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 { @apply font-display text-balance; letter-spacing: -0.03em; }
+  p { text-wrap: pretty; }
+  ::selection { background: #F39200; color: #0B1F3A; }
+  :focus-visible { outline: 2px solid #F39200; outline-offset: 3px; border-radius: 6px; }
+  a, button, [role="button"], summary, label { touch-action: manipulation; }
+  button, [role="button"], summary, .btn { -webkit-user-select: none; user-select: none; }
+  input, select, textarea { font-size: 16px; }
+  img { -webkit-user-drag: none; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #c5cfdc; border-radius: 999px; border: 2px solid #F7F8FA; }
+  ::-webkit-scrollbar-track { background: #F7F8FA; }
+  html { scrollbar-color: #c5cfdc #F7F8FA; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-content px-5 sm:px-8; }
+  .section { @apply py-20 sm:py-28; }
+
+  .ico {
+    width: 1.25rem; height: 1.25rem; flex-shrink: 0;
+    fill: none; stroke: currentColor; stroke-width: 1.75;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  /* ---------- Botões ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full font-semibold whitespace-nowrap;
+    min-height: 3.25rem; padding: 0 1.6rem;
+    transition: transform var(--dur-quick) var(--ease-out), background-color var(--dur-std) ease, box-shadow var(--dur-std) ease, color var(--dur-std) ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-cta { @apply bg-accent text-navy shadow-cta; }
+  .btn-cta:hover { @apply bg-accent-400; box-shadow: 0 10px 22px -8px rgba(0,0,0,.45); }
+  .btn-ghost-dark { @apply text-white ring-1 ring-inset ring-white/25; }
+  .btn-ghost-dark:hover { @apply bg-white/10 ring-white/40; }
+  .btn-lg { min-height: 3.75rem; padding: 0 2rem; font-size: 1.0625rem; }
+  @media (max-width: 380px) {
+    .btn-lg { white-space: normal; text-align: center; padding: 0.75rem 1.25rem; font-size: 1rem; }
+  }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    padding-top: env(safe-area-inset-top, 0px);
+    transition: background-color var(--dur-std) ease, box-shadow var(--dur-std) ease, backdrop-filter var(--dur-std) ease;
+  }
+  .site-header[data-scrolled="true"] {
+    background: rgba(7, 21, 40, 0.78);
+    -webkit-backdrop-filter: saturate(160%) blur(16px);
+    backdrop-filter: saturate(160%) blur(16px);
+    box-shadow: 0 1px 0 rgba(255,255,255,.06), 0 10px 30px -18px rgba(0,0,0,.6);
+  }
+  .nav-link { @apply relative text-[0.9375rem] font-medium text-white/75; transition: color var(--dur-std) ease; }
+  .nav-link:hover { @apply text-white; }
+
+  .mobile-menu { transition: opacity var(--dur-std) var(--ease-out), transform var(--dur-std) var(--ease-out), visibility 0s linear var(--dur-std); }
+  .mobile-menu[data-open="false"] { opacity: 0; transform: translateY(-8px); visibility: hidden; pointer-events: none; }
+  .mobile-menu[data-open="true"] { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 100svh;
+    background:
+      radial-gradient(60rem 40rem at 85% 10%, rgba(0, 92, 169, 0.45), transparent 60%),
+      radial-gradient(40rem 30rem at -10% 100%, rgba(0, 92, 169, 0.22), transparent 60%),
+      #0B1F3A;
+  }
+  .portrait-stage {
+    background: radial-gradient(closest-side, #1f74c4 0%, #005CA9 45%, rgba(0,92,169,0) 100%);
+  }
+  .chip-glass {
+    @apply flex items-center gap-2.5 rounded-2xl px-4 py-3 text-sm font-semibold text-white shadow-glass;
+    background: linear-gradient(140deg, rgba(255,255,255,.18), rgba(255,255,255,.07));
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255,255,255,.22);
+  }
+  .chip-glass .tick { @apply grid h-7 w-7 place-items-center rounded-full bg-accent text-navy; }
+
+  /* ---------- Cards ---------- */
+  .card {
+    @apply rounded-3xl bg-white shadow-soft ring-1 ring-line/70;
+    transition: transform var(--dur-std) var(--ease-out), box-shadow var(--dur-std) var(--ease-out);
+  }
+  .card-hover:hover { transform: translateY(-4px); @apply shadow-lift; }
+  .icon-tile { @apply grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand; }
+
+  /* ---------- Bolhas de conversa (dores) ---------- */
+  .bubble {
+    @apply relative max-w-[22rem] rounded-3xl px-5 py-4 text-[1.0625rem] leading-snug shadow-soft;
+  }
+  /* bubble-in = mensagem do visitante (direita); bubble-out = resposta do Victor (esquerda) */
+  .bubble-in { @apply rounded-br-md bg-white text-ink ring-1 ring-line/70; }
+  .bubble-out { @apply rounded-bl-md bg-navy text-white; }
+  .bubble-meta { @apply mt-1.5 block text-xs font-medium; }
+
+  /* ---------- Timeline ---------- */
+  .step-dot {
+    @apply relative z-10 grid h-14 w-14 place-items-center rounded-2xl bg-white font-display text-lg font-bold text-brand shadow-soft ring-1 ring-line;
+  }
+
+  /* ---------- Reels ---------- */
+  .reel {
+    @apply relative block overflow-hidden rounded-[1.75rem] text-white shadow-lift;
+    aspect-ratio: 9 / 16;
+    background-color: #0B1F3A;
+    background-image: var(--thumb, none), var(--tone);
+    background-size: cover; background-position: center;
+    transition: transform var(--dur-std) var(--ease-out), box-shadow var(--dur-std) var(--ease-out);
+  }
+  .reel:hover { transform: translateY(-6px); }
+  .reel .play {
+    @apply grid h-16 w-16 place-items-center rounded-full text-navy;
+    background: rgba(255,255,255,.92);
+    transition: transform var(--dur-std) var(--ease-out);
+  }
+  .reel:hover .play { transform: scale(1.08); }
+
+  /* ---------- Depoimentos ---------- */
+  .track {
+    @apply flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4;
+    scrollbar-width: none; overscroll-behavior-x: contain;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .track > * { @apply snap-start; }
+  /* Trilho que sangra até a borda da tela, alinhado ao container */
+  .track-bleed { padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
+  @media (min-width: 640px) {
+    .track-bleed { padding-inline: max(2rem, calc((100% - 72rem) / 2 + 2rem)); scroll-padding-inline: max(2rem, calc((100% - 72rem) / 2 + 2rem)); }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item { @apply rounded-2xl bg-white ring-1 ring-line/80; transition: box-shadow var(--dur-std) ease; }
+  .faq-item[open] { @apply shadow-soft; }
+  .faq-item summary { @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 font-display text-[1.0625rem] font-semibold sm:px-7; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item .chev { @apply grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-50 text-brand; transition: transform var(--dur-std) var(--ease-out), background-color var(--dur-std) ease; }
+  .faq-item[open] .chev { transform: rotate(180deg); @apply bg-brand text-white; }
+  .faq-body { overflow: hidden; transition: height var(--dur-std) var(--ease-out), opacity var(--dur-std) var(--ease-out); }
+
+  /* ---------- Formulário ---------- */
+  .field-label { @apply mb-2 block text-sm font-semibold text-white/85; }
+  .field {
+    @apply block w-full rounded-2xl border-0 bg-white/[0.08] px-4 text-white ring-1 ring-inset ring-white/20 placeholder:text-[#A9C2E0];
+    min-height: 3.25rem; font-size: 16px;
+    transition: box-shadow var(--dur-std) ease, background-color var(--dur-std) ease;
+  }
+  .field:focus { outline: none; @apply bg-white/[0.12] ring-2 ring-accent; }
+  .field[aria-invalid="true"] { @apply ring-2 ring-[#FF8A80]; }
+  select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.75rem; }
+  select.field option { color: #0B1F3A; }
+  .seg { @apply flex rounded-2xl bg-white/[0.08] p-1 ring-1 ring-inset ring-white/20; }
+  .seg label { @apply relative flex-1; }
+  .seg input { position: absolute; opacity: 0; inset: 0; }
+  .seg span { @apply flex min-h-[2.75rem] cursor-pointer items-center justify-center rounded-xl text-[0.9375rem] font-semibold text-white/75; transition: background-color var(--dur-std) ease, color var(--dur-std) ease; }
+  .seg input:checked + span { @apply bg-white text-navy; }
+  .seg input:focus-visible + span { outline: 2px solid #F39200; outline-offset: 2px; }
+
+  /* ---------- WhatsApp flutuante ---------- */
+  .wa-float {
+    position: fixed; z-index: 60;
+    right: calc(1rem + env(safe-area-inset-right, 0px));
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    transition: transform var(--dur-std) var(--ease-out), opacity var(--dur-std) var(--ease-out);
+  }
+  .wa-float[data-hidden="true"] { transform: translateY(140%); opacity: 0; pointer-events: none; }
+  .wa-float .pulse { position: absolute; inset: 0; border-radius: 999px; background: #F39200; z-index: -1; animation: wa-pulse 2.6s var(--ease-out) infinite; }
+  @keyframes wa-pulse {
+    0% { transform: scale(1); opacity: .55; }
+    70%, 100% { transform: scale(1.55); opacity: 0; }
+  }
+
+  /* ---------- Placeholders editáveis ---------- */
+  .ph-seal { @apply grid place-items-center rounded-2xl border border-dashed text-center text-[11px] font-semibold uppercase leading-tight tracking-wide; }
+}
+
+/* =========================================================
+   Revelação ao rolar (o conteúdo é visível por padrão; só some
+   quando o JS confirma que vai animar)
+   ========================================================= */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.js [data-reveal="fade"] { transform: none; }
+.js [data-reveal="scale"] { transform: scale(0.97); }
+.js [data-reveal][data-visible] { opacity: 1; transform: none; }
+
+/* Bolhas chegam como mensagens: sobem do canto de origem */
+.js .bubble[data-reveal] { transform: translateY(12px) scale(0.96); transform-origin: bottom right; }
+.js [data-reveal] .bubble-out, .js .bubble-out[data-reveal] { transform-origin: bottom left; }
+.js .bubble[data-reveal][data-visible] { transform: none; }
+
+/* Chips do hero: flutuação ambiente bem lenta */
+@keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.float-a { animation: float-y 6s ease-in-out infinite; }
+.float-b { animation: float-y 7s ease-in-out -2s infinite; }
+.float-c { animation: float-y 6.5s ease-in-out -4s infinite; }
+
+/* Entrada do hero (não depende de scroll) */
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.js .hero-in { animation: rise 700ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js [data-reveal], .js .bubble[data-reveal] { transform: none !important; transition: opacity 300ms ease; }
+  .js .hero-in { animation: fade 300ms ease both; }
+  .float-a, .float-b, .float-c { animation: none; }
+  .wa-float .pulse { animation: none; opacity: 0; }
+  .card-hover:hover, .reel:hover { transform: none; }
+  .btn:active { transform: none; }
+}
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }

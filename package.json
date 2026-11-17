@@ -1,0 +1,16 @@
+{
+  "name": "victor-ramos-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page de Victor Ramos — Correspondente bancário Caixa em Recife",
+  "scripts": {
+    "icons": "node scripts/build-icons.mjs",
+    "css": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --minify",
+    "build": "npm run icons && npm run css",
+    "dev": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --watch"
+  },
+  "devDependencies": {
+    "lucide-static": "0.460.0",
+    "tailwindcss": "3.4.17"
+  }
+}

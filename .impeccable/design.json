@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T15:00:00Z",
+  "title": "Design System: Victor Ramos · Crédito Imobiliário",
+  "extensions": {
+    "colorMeta": {
+      "night-navy": { "role": "primary", "displayName": "Night Navy", "canonical": "#0B1F3A", "tonalRamp": ["#040B16", "#071528", "#0B1F3A", "#13305A", "#1B3F72", "#3D5E8C", "#8EA3C0", "#DCE3EE"] },
+      "institutional-blue": { "role": "primary", "displayName": "Institutional Blue", "canonical": "#005CA9", "tonalRamp": ["#002A4E", "#003F75", "#004E91", "#005CA9", "#3A92D8", "#6FB0E6", "#D3E6F6", "#EAF3FB"] },
+      "cta-orange": { "role": "secondary", "displayName": "CTA Orange", "canonical": "#F39200", "tonalRamp": ["#5C3700", "#8F5600", "#D98200", "#F39200", "#FFA524", "#FFC266", "#FFE0B3", "#FFF3E0"] },
+      "reading-ground": { "role": "neutral", "displayName": "Reading Ground", "canonical": "#F7F8FA", "tonalRamp": ["#0B1F3A", "#3D4F68", "#5A6B82", "#8A98AB", "#C5CFDC", "#E3E8EF", "#F7F8FA", "#FFFFFF"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only." },
+      "heading": { "displayName": "Section heading", "purpose": "One H2 per section, no eyebrow above it." },
+      "body": { "displayName": "Body", "purpose": "Short didactic sentences in Victor's voice." }
+    },
+    "shadows": [
+      { "name": "soft", "value": "0 1px 2px rgba(11,31,58,.04), 0 8px 24px -8px rgba(11,31,58,.10)", "purpose": "Resting cards on light grounds." },
+      { "name": "lift", "value": "0 2px 4px rgba(11,31,58,.05), 0 20px 40px -16px rgba(11,31,58,.22)", "purpose": "Hover state and photos." },
+      { "name": "cta", "value": "0 6px 16px -6px rgba(0,0,0,.4)", "purpose": "Orange action buttons." },
+      { "name": "glass", "value": "0 10px 30px -10px rgba(3,12,28,.55)", "purpose": "Glass chips over the hero portrait." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Every entrance, press and hover." },
+      { "name": "dur-quick", "value": "160ms", "purpose": "Button press." },
+      { "name": "dur-std", "value": "240ms", "purpose": "Hover, accordion, menu." },
+      { "name": "dur-reveal", "value": "560ms", "purpose": "Scroll reveals, 60–80ms stagger; bubbles 280ms apart." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "CTA Button",
+      "kind": "button",
+      "refersTo": "button-cta",
+      "description": "The only orange element: opens WhatsApp.",
+      "html": "<button class=\"ds-btn-cta\">Fazer minha simulação grátis</button>",
+      "css": ".ds-btn-cta { display:inline-flex; align-items:center; gap:10px; min-height:52px; padding:0 26px; border:0; border-radius:999px; background:#F39200; color:#0B1F3A; font:600 16px Inter, sans-serif; box-shadow:0 6px 16px -6px rgba(0,0,0,.4); transition:transform 160ms cubic-bezier(0.23,1,0.32,1), background-color 240ms ease; cursor:pointer; } .ds-btn-cta:hover { background:#FFA524; } .ds-btn-cta:active { transform:scale(0.97); } .ds-btn-cta:focus-visible { outline:2px solid #F39200; outline-offset:3px; }"
+    },
+    {
+      "name": "Glass Chip",
+      "kind": "chip",
+      "refersTo": "chip-glass",
+      "description": "Benefit chip floating over the hero portrait.",
+      "html": "<div style=\"background:#0B1F3A;padding:24px\"><span class=\"ds-chip\"><span class=\"ds-tick\">✓</span>Uso do FGTS</span></div>",
+      "css": ".ds-chip { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:16px; color:#fff; font:600 14px Inter, sans-serif; background:linear-gradient(140deg, rgba(255,255,255,.18), rgba(255,255,255,.07)); border:1px solid rgba(255,255,255,.22); backdrop-filter:blur(14px) saturate(150%); box-shadow:0 10px 30px -10px rgba(3,12,28,.55); } .ds-tick { display:grid; place-items:center; width:28px; height:28px; border-radius:999px; background:#F39200; color:#0B1F3A; font-size:13px; }"
+    },
+    {
+      "name": "Chat Bubbles",
+      "kind": "custom",
+      "refersTo": "bubble-visitor",
+      "description": "Signature: visitor doubts (white, right) answered by Victor (navy, left).",
+      "html": "<div class=\"ds-thread\"><p class=\"ds-b ds-b-in\">Será que meu crédito é aprovado?</p><p class=\"ds-b ds-b-out\">Comigo você tem um especialista do seu lado em cada etapa.</p></div>",
+      "css": ".ds-thread { display:flex; flex-direction:column; gap:12px; padding:24px; background:#EAF3FB; border-radius:32px; } .ds-b { max-width:22rem; margin:0; padding:16px 20px; border-radius:24px; font:400 17px/1.35 Inter, sans-serif; } .ds-b-in { align-self:flex-end; background:#fff; color:#0B1F3A; border-bottom-right-radius:6px; box-shadow:0 8px 24px -8px rgba(11,31,58,.10); } .ds-b-out { align-self:flex-start; background:#0B1F3A; color:#fff; border-bottom-left-radius:6px; font:600 19px/1.3 Sora, sans-serif; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White card with blue icon tile; lifts 4px on hover.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-tile\"></span><h3>Uso do FGTS</h3><p>Na entrada, para amortizar o saldo devedor ou reduzir parcelas.</p></article>",
+      "css": ".ds-card { max-width:320px; padding:28px; background:#fff; border-radius:24px; box-shadow:0 1px 2px rgba(11,31,58,.04), 0 8px 24px -8px rgba(11,31,58,.10); outline:1px solid rgba(227,232,239,.7); transition:transform 240ms cubic-bezier(0.23,1,0.32,1), box-shadow 240ms; } .ds-card:hover { transform:translateY(-4px); box-shadow:0 2px 4px rgba(11,31,58,.05), 0 20px 40px -16px rgba(11,31,58,.22); } .ds-tile { display:block; width:48px; height:48px; border-radius:16px; background:#EAF3FB; } .ds-card h3 { margin:24px 0 8px; font:700 20px Sora, sans-serif; color:#0B1F3A; letter-spacing:-.03em; } .ds-card p { margin:0; font:400 16px/1.6 Inter, sans-serif; color:#3D4F68; }"
+    },
+    {
+      "name": "Dark Input",
+      "kind": "input",
+      "refersTo": "input-dark",
+      "description": "Lead form field on the navy closing block.",
+      "html": "<div style=\"background:#0B1F3A;padding:24px\"><input class=\"ds-input\" placeholder=\"Como posso te chamar?\"></div>",
+      "css": ".ds-input { width:100%; min-height:52px; padding:0 16px; border:0; border-radius:16px; background:rgba(255,255,255,.08); color:#fff; font:400 16px Inter, sans-serif; box-shadow:inset 0 0 0 1px rgba(255,255,255,.2); } .ds-input::placeholder { color:#A9C2E0; } .ds-input:focus { outline:none; background:rgba(255,255,255,.12); box-shadow:inset 0 0 0 2px #F39200; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A conversation with the specialist",
+    "overview": "Night-navy fields bracket an off-white reading ground. The page reads like the WhatsApp conversation it exists to start: doubts arrive as bubbles, Victor answers, the path is shown in four steps, and orange always means 'talk to Victor'.",
+    "keyCharacteristics": ["Dark hero with cut-out portrait and glass chips", "Chat-thread signature section", "Orange reserved for actions", "Sora headings, Inter body", "Soft offset shadows, no glows"],
+    "rules": [
+      { "name": "The One Action Rule", "body": "Orange is only for actions that open WhatsApp or submit the lead form.", "section": "colors" },
+      { "name": "No Caixa imitation", "body": "Never the Caixa logo or its look; only the text 'Correspondente bancário Caixa' and a reserved seal slot.", "section": "colors" }
+    ],
+    "dos": ["Do keep claims verifiable and rules caveated", "Do give every press an :active state", "Do keep inputs at 16px"],
+    "donts": ["Don't add eyebrow labels above headings", "Don't use gradient text or colored glows", "Don't invent testimonials or stats"]
+  }
+}

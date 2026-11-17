@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" width="900" height="1125" role="img" aria-label="Espaço reservado para a foto do Victor Ramos">
+  <defs>
+    <linearGradient id="b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A5C93"/>
+      <stop offset="1" stop-color="#13305A"/>
+    </linearGradient>
+    <linearGradient id="h" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3D73AD"/>
+      <stop offset="1" stop-color="#22507F"/>
+    </linearGradient>
+  </defs>
+  <!-- Silhueta provisória: substituir por PNG recortado do Victor -->
+  <path d="M120 1125c0-190 70-300 190-350 45-19 95-30 140-30s95 11 140 30c120 50 190 160 190 350z" fill="url(#b)"/>
+  <path d="M385 700h130v70c0 30-30 55-65 55s-65-25-65-55z" fill="#22507F"/>
+  <ellipse cx="450" cy="520" rx="150" ry="182" fill="url(#h)"/>
+  <path d="M300 500c-6-120 60-200 150-200s160 70 152 196c-20-60-70-96-152-96s-130 40-150 100z" fill="#173E69"/>
+  <g fill="#ffffff" fill-opacity=".72" font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="450" y="830" font-size="30" font-weight="600" letter-spacing="3">FOTO DO VICTOR</text>
+    <text x="450" y="866" font-size="22" fill-opacity=".55">PNG com fundo transparente</text>
+  </g>
+</svg>
