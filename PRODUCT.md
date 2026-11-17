@@ -31,6 +31,7 @@ Visitors come from Reels and the bio link; the decision happens in a WhatsApp co
 - Must NOT use the official Caixa logo or imitate Caixa's site. Only the text "Correspondente bancário Caixa", with a reserved slot for the official correspondent seal if authorized.
 - Rules (FGTS, quotas, ITBI) change; copy must say analysis is individual and subject to current Caixa rules.
 - WhatsApp: 55 81 99921-7553.
+- Escritório: Av. João de Barros, 1261, Loja 1, Salas 05/06, Recife/PE.
 - Undecided (placeholders, marked in code): number of families served, years of experience, CRECI, CNPJ, photos of Victor, Reels thumbnails/links, testimonials.
 
 ## Brand Commitments
